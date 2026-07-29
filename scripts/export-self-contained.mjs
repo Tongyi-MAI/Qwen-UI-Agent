@@ -235,6 +235,7 @@ async function bundleReviewApplication(temporaryDirectory) {
     plugins: [standalonePlugin(), react()],
     define: {
       "process.env.NODE_ENV": JSON.stringify("production"),
+      "process.env.NEXT_PUBLIC_SITE_BASE_PATH": JSON.stringify(""),
     },
     build: {
       target: "es2020",

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Language, LocalizedText } from "../siteContent";
 import { localize } from "../siteContent";
+import { siteAsset } from "../sitePath";
 
 const MOBILEWORLD_REAL_COPY = {
   en: {
@@ -127,7 +128,7 @@ export function MobileWorldRealPage() {
           <Link className="site-brand" href="/" aria-label="Qwen-UI-Agent home">
             <img
               className="brand-mark"
-              src="/tongyi-mark.png"
+              src={siteAsset("/tongyi-mark.png")}
               alt=""
               width="34"
               height="34"
@@ -203,7 +204,7 @@ export function MobileWorldRealPage() {
             <figure className="mobileworld-real-profile-figure">
               <div className="mobileworld-real-figure-scroll">
                 <img
-                  src="/report/mobileworld-real-profile.webp"
+                  src={siteAsset("/report/mobileworld-real-profile.webp")}
                   alt={copy.figureCaption}
                   width="3200"
                   height="2469"
@@ -238,7 +239,7 @@ export function MobileWorldRealPage() {
           <Link className="site-brand" href="/">
             <img
               className="brand-mark"
-              src="/tongyi-mark.png"
+              src={siteAsset("/tongyi-mark.png")}
               alt=""
               width="30"
               height="30"

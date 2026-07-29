@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-
-const siteUrl = "https://qwen-ui-agent.github.io";
+import {
+  PUBLIC_SITE_URL,
+  absoluteSiteUrl,
+} from "./sitePath";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(PUBLIC_SITE_URL),
   title: "Qwen-UI-Agent — Technical Report",
   description:
     "Qwen-UI-Agent is Alibaba's next-generation real-world-centric GUI agent for mobile, computer use, web browsers, and cross-platform workflows.",
@@ -18,23 +20,23 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MAI-UI Team" }],
   alternates: {
-    canonical: "/",
+    canonical: PUBLIC_SITE_URL,
   },
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/apple-touch-icon.png",
+    icon: absoluteSiteUrl("favicon.png"),
+    shortcut: absoluteSiteUrl("favicon.png"),
+    apple: absoluteSiteUrl("apple-touch-icon.png"),
   },
   openGraph: {
     type: "website",
-    url: siteUrl,
+    url: PUBLIC_SITE_URL,
     siteName: "Qwen-UI-Agent",
     title: "Qwen-UI-Agent — Technical Report",
     description:
       "Alibaba's next-generation real-world-centric GUI agent, built for reliable real-phone and computer-use workflows.",
     images: [
       {
-        url: "/og.png",
+        url: absoluteSiteUrl("og.png"),
         width: 1536,
         height: 1024,
         alt: "Qwen-UI-Agent technical report preview",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
     title: "Qwen-UI-Agent — Technical Report",
     description:
       "Alibaba's next-generation real-world-centric GUI agent, built for reliable real-phone and computer-use workflows.",
-    images: ["/og.png"],
+    images: [absoluteSiteUrl("og.png")],
   },
 };
 

@@ -32,7 +32,14 @@ jobs:
         run: npm ci
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_SITE_BASE_PATH: /Qwen-UI-Agent
         run: npm run build:pages
+
+      - name: Validate deployment paths
+        env:
+          NEXT_PUBLIC_SITE_BASE_PATH: /Qwen-UI-Agent
+        run: npm run validate:pages
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

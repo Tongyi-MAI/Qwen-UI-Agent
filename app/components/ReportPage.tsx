@@ -11,6 +11,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { CopyCitation } from "./CopyCitation";
+import { siteAsset } from "../sitePath";
 import {
   APPLICATIONS,
   DEMO_CATEGORIES,
@@ -230,7 +231,7 @@ function PerformanceCard({
                   <i>
                     {organization ? (
                       organization.logo ? (
-                        <img src={organization.logo} alt="" />
+                        <img src={siteAsset(organization.logo)} alt="" />
                       ) : (
                         <span>{organization.mark}</span>
                       )
@@ -342,11 +343,11 @@ function CapabilityVideo({
       loop
       playsInline
       preload="metadata"
-      poster={poster}
+      poster={siteAsset(poster)}
       aria-hidden="true"
       tabIndex={-1}
     >
-      <source src={src} type="video/mp4" />
+      <source src={siteAsset(src)} type="video/mp4" />
     </video>
   );
 }
@@ -1358,7 +1359,7 @@ function ApplicationVisual({
                 style={{ aspectRatio: frame.aspectRatio }}
               >
                 <img
-                  src={frame.src}
+                  src={siteAsset(frame.src)}
                   alt=""
                   loading="lazy"
                   decoding="async"
@@ -1405,7 +1406,7 @@ function ApplicationVisual({
       className={`application-visual application-visual-${application.kind}`}
     >
       <img
-        src={application.visual.src}
+        src={siteAsset(application.visual.src)}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -1430,7 +1431,7 @@ function DemoMedia({
   if (video.mediaType === "embed") {
     return (
       <iframe
-        src={video.src}
+        src={siteAsset(video.src)}
         title={title}
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1446,21 +1447,21 @@ function DemoMedia({
         controls
         playsInline
         preload="metadata"
-        poster={video.poster}
+        poster={siteAsset(video.poster)}
         title={title}
         onLoadedMetadata={(event) => {
           event.currentTarget.defaultPlaybackRate = defaultPlaybackRate;
           event.currentTarget.playbackRate = defaultPlaybackRate;
         }}
       >
-        <source src={video.src} type="video/mp4" />
+        <source src={siteAsset(video.src)} type="video/mp4" />
       </video>
     );
   }
 
   return (
     <div className="video-placeholder">
-      <img src={video.src} alt="" loading="lazy" />
+      <img src={siteAsset(video.src)} alt="" loading="lazy" />
       <span>
         <b aria-hidden="true">▶</b>
         {localize(video.status, language)}
@@ -1636,7 +1637,7 @@ export function ReportPage() {
           <a className="site-brand" href="#top" aria-label="Qwen-UI-Agent home">
             <img
               className="brand-mark"
-              src="/tongyi-mark.png"
+              src={siteAsset("/tongyi-mark.png")}
               alt=""
               width="34"
               height="34"
@@ -1690,7 +1691,7 @@ export function ReportPage() {
               <span>{authorTeam} ·</span>
               <span className="hero-author-organization">
                 <img
-                  src="/tongyi-mark.png"
+                  src={siteAsset("/tongyi-mark.png")}
                   alt=""
                   width="18"
                   height="18"
@@ -2236,7 +2237,7 @@ export function ReportPage() {
           <a className="site-brand" href="#top">
             <img
               className="brand-mark"
-              src="/tongyi-mark.png"
+              src={siteAsset("/tongyi-mark.png")}
               alt=""
               width="30"
               height="30"
