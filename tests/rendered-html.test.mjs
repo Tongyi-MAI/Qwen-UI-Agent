@@ -37,13 +37,18 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(html, /MAI-UI Team/);
   assert.match(
     html,
-    /Alibaba&#x27;s Next-Generation Real-World-Centric GUI Agent/,
+    /Towards Next-Generation Real-World Centric Foundation GUI Agent/,
   );
   assert.match(
     html,
-    /One agent for real phones, computers, and web browsers, with Deep Research capabilities/,
+    /One agent that thinks, searches, and acts across mobile, desktop, and the web/,
   );
-  assert.match(html, /in the real world through to completion/);
+  assert.match(html, /complete real-world, long-horizon tasks/);
+  assert.match(html, /State-of-the-art performance on mobile/);
+  assert.match(
+    html,
+    /Frontier-level performance across desktop and web/,
+  );
   assert.match(html, /src=["']\/tongyi-mark\.png["']/);
   assert.match(html, /Built to complete real work across GUI interfaces/);
   assert.match(html, /Mobile GUI Use/);

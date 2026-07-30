@@ -306,6 +306,7 @@ video {
   color: var(--ink-soft);
   font-size: 16px;
   line-height: 1.75;
+  white-space: pre-line;
 }
 
 .hero-authors {

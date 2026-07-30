@@ -8,9 +8,9 @@ export type LocalizedText = {
 export const SITE_COPY = {
   en: {
     nav: ["Capabilities", "Performance", "Demos", "Citation"],
-    subtitle: "Alibaba's Next-Generation Real-World-Centric GUI Agent",
+    subtitle: "Towards Next-Generation Real-World Centric Foundation GUI Agent",
     hero:
-      "One agent for real phones, computers, and web browsers, with Deep Research capabilities—built to carry complex, multi-step work in the real world through to completion.",
+      "One agent that thinks, searches, and acts across mobile, desktop, and the web to complete real-world, long-horizon tasks.\nState-of-the-art performance on mobile. Frontier-level performance across desktop and web.",
     authors: "MAI-UI Team · Alibaba Token Hub",
     technicalReport: "Technical report",
     watchDemos: "Watch demos",
