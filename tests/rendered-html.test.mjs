@@ -81,6 +81,8 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /Five compact views|Move between scenarios|selected capability expands/,
   );
   assert.match(html, /Technical report/);
+  assert.match(html, /https:\/\/github\.com\/Tongyi-MAI\/MAI-UI/);
+  assert.match(html, />GitHub</);
   assert.match(html, /End-to-End GUI Tasks/);
   assert.match(html, /Broader Capabilities/);
   assert.match(

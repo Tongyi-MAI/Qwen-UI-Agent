@@ -379,6 +379,12 @@ video {
   box-shadow: var(--shadow-soft);
 }
 
+.github-mark {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
 .play-mark {
   display: grid;
   width: 26px;
