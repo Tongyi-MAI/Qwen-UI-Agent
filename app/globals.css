@@ -6011,6 +6011,23 @@ body {
   background: white;
 }
 
+@media (min-width: 1280px) {
+  .hero-copy {
+    width: min(1480px, calc(100% - 48px));
+    max-width: none;
+  }
+
+  .hero-subtitle {
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .hero-intro {
+    max-width: 1360px;
+    white-space: pre;
+  }
+}
+
 .play-mark {
   background: #e8e4db;
   color: var(--ink);
