@@ -5993,6 +5993,24 @@ body {
   box-shadow: none;
 }
 
+.hero-performance-strip {
+  display: grid;
+  width: min(1460px, calc(100vw - 48px));
+  margin: 42px 50% 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  transform: translateX(-50%);
+}
+
+.hero-performance-strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+}
+
 .play-mark {
   background: #e8e4db;
   color: var(--ink);
@@ -7245,6 +7263,19 @@ footer {
 
   .demo-category-button:last-child {
     border-bottom: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-performance-strip {
+    width: min(760px, calc(100vw - 30px));
+    margin-top: 34px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .hero-performance-strip img {
+    border-radius: 7px;
   }
 }
 

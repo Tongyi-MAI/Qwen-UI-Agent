@@ -1734,6 +1734,36 @@ export function ReportPage() {
                 {copy.watchDemos}
               </a>
             </div>
+
+            <div
+              className="hero-performance-strip"
+              aria-label={
+                language === "zh"
+                  ? "Qwen-UI-Agent 六项代表性基准结果"
+                  : "Six representative Qwen-UI-Agent benchmark results"
+              }
+            >
+              <img
+                src={siteAsset("/hero-performance-mobile.png")}
+                alt={
+                  language === "zh"
+                    ? "MobileWorld、MobileWorld-Real 与 AndroidDaily 性能对比"
+                    : "Performance comparisons on MobileWorld, MobileWorld-Real, and AndroidDaily"
+                }
+                width="2244"
+                height="652"
+              />
+              <img
+                src={siteAsset("/hero-performance-desktop-web.png")}
+                alt={
+                  language === "zh"
+                    ? "OSWorld-Verified、WebArena 与 ScreenSpot-Pro 性能对比"
+                    : "Performance comparisons on OSWorld-Verified, WebArena, and ScreenSpot-Pro"
+                }
+                width="2244"
+                height="652"
+              />
+            </div>
           </div>
         </section>
 
