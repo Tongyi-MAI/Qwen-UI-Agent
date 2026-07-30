@@ -6011,6 +6011,24 @@ body {
   background: white;
 }
 
+@media (min-width: 901px) {
+  .hero-copy {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hero-performance-strip {
+    order: 1;
+    margin: 42px 0 0;
+    transform: none;
+  }
+
+  .hero-actions {
+    order: 2;
+  }
+}
+
 @media (min-width: 1280px) {
   .hero-copy {
     width: min(1480px, calc(100% - 48px));
