@@ -1702,11 +1702,15 @@ export function ReportPage() {
             </p>
 
             <div className="hero-actions">
-              <span className="report-button report-button-primary is-pending">
+              <a
+                className="report-button report-button-primary"
+                href={siteAsset("/Qwen-UI-Agent-Technical-Report.pdf")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <b>PDF</b>
                 {copy.technicalReport}
-                <small>{copy.comingSoon}</small>
-              </span>
+              </a>
               <a className="report-button report-button-secondary" href="#demos">
                 <span className="play-mark" aria-hidden="true">
                   ▶

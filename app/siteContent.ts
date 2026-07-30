@@ -13,7 +13,6 @@ export const SITE_COPY = {
       "One agent for real phones, computers, and web browsers, with Deep Research capabilities—built to carry complex, multi-step work in the real world through to completion.",
     authors: "MAI-UI Team · Alibaba Token Hub",
     technicalReport: "Technical report",
-    comingSoon: "Coming soon",
     watchDemos: "Watch demos",
     applicationsEyebrow: "WHAT IT CAN DO",
     applicationsStatement:
@@ -65,7 +64,6 @@ export const SITE_COPY = {
       "一个智能体，覆盖真实手机、电脑和网页浏览器，并具备深度研究能力，能够在真实场景中把复杂的多步骤任务真正做完。",
     authors: "MAI-UI 团队 · Alibaba Token Hub",
     technicalReport: "技术报告",
-    comingSoon: "即将发布",
     watchDemos: "观看演示",
     applicationsEyebrow: "它能做什么",
     applicationsStatement:

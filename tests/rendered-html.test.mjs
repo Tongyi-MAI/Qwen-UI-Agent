@@ -113,6 +113,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     html,
     /A concise, application-first technical report website/,
   );
+  assert.match(
+    html,
+    /href=["']\/Qwen-UI-Agent-Technical-Report\.pdf["']/,
+  );
+  assert.match(html, /target=["']_blank["']/);
+  assert.match(html, /rel=["']noopener noreferrer["']/);
+  assert.doesNotMatch(html, /Coming soon|即将发布/);
+
+  const technicalReport = await stat(
+    new URL(
+      "../public/Qwen-UI-Agent-Technical-Report.pdf",
+      import.meta.url,
+    ),
+  );
+  assert.ok(technicalReport.size > 0);
 });
 
 test("includes publication sections, performance evidence, demos, and language controls", async () => {

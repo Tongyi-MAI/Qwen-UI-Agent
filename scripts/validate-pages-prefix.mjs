@@ -65,6 +65,7 @@ const requiredHomeReferences = [
   `${basePath}/tongyi-mark.png`,
   `${basePath}/brand-logos/`,
   `${basePath}/demos/`,
+  `${basePath}/Qwen-UI-Agent-Technical-Report.pdf`,
 ];
 
 for (const reference of requiredHomeReferences) {
