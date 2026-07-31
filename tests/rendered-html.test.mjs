@@ -677,8 +677,9 @@ test("keeps key Chinese interface labels fully localized", async () => {
   );
   assert.match(
     siteContent,
-    /覆盖真实手机、电脑和网页浏览器，并具备深度研究能力/,
+    /一个能够在手机、电脑和网页上思考、搜索并执行操作的智能体/,
   );
+  assert.match(siteContent, /移动端性能达到业界领先水平，电脑端与网页端达到前沿水平/);
   assert.match(siteContent, /demosEyebrow:\s*"演示"/);
   assert.doesNotMatch(siteContent, /demosEyebrow:\s*"交互演示"/);
   for (const caseTitle of [
