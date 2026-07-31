@@ -44,10 +44,9 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /One agent that thinks, searches, and acts across mobile, desktop, and the web/,
   );
   assert.match(html, /complete real-world, long-horizon tasks/);
-  assert.match(html, /State-of-the-art performance on mobile/);
-  assert.match(
+  assert.doesNotMatch(
     html,
-    /Frontier-level performance across desktop and web/,
+    /State-of-the-art performance on mobile|Frontier-level performance across desktop and web/,
   );
   assert.match(html, /src=["']\/tongyi-mark\.png["']/);
   assert.match(html, /Built to complete real work across GUI interfaces/);
@@ -679,7 +678,10 @@ test("keeps key Chinese interface labels fully localized", async () => {
     siteContent,
     /一个能够在手机、电脑和网页上思考、搜索并执行操作的智能体/,
   );
-  assert.match(siteContent, /移动端性能达到业界领先水平，电脑端与网页端达到前沿水平/);
+  assert.doesNotMatch(
+    siteContent,
+    /State-of-the-art performance on mobile|移动端性能达到业界领先水平/,
+  );
   assert.match(siteContent, /demosEyebrow:\s*"演示"/);
   assert.doesNotMatch(siteContent, /demosEyebrow:\s*"交互演示"/);
   for (const caseTitle of [

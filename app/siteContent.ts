@@ -10,7 +10,7 @@ export const SITE_COPY = {
     nav: ["Capabilities", "Performance", "Demos", "Citation"],
     subtitle: "Towards Next-Generation Real-World Centric Foundation GUI Agent",
     hero:
-      "One agent that thinks, searches, and acts across mobile, desktop, and the web to complete real-world, long-horizon tasks.\nState-of-the-art performance on mobile. Frontier-level performance across desktop and web.",
+      "One agent that thinks, searches, and acts across mobile, desktop, and the web to complete real-world, long-horizon tasks.",
     authors: "MAI-UI Team · Alibaba Token Hub",
     technicalReport: "Technical report",
     watchDemos: "Watch demos",
@@ -61,7 +61,7 @@ export const SITE_COPY = {
     nav: ["智能体能力", "性能指标", "演示", "引用"],
     subtitle: "阿里巴巴集团的新一代真实场景 GUI 智能体",
     hero:
-      "一个能够在手机、电脑和网页上思考、搜索并执行操作的智能体，完成真实世界中的长程任务。\n移动端性能达到业界领先水平，电脑端与网页端达到前沿水平。",
+      "一个能够在手机、电脑和网页上思考、搜索并执行操作的智能体，完成真实世界中的长程任务。",
     authors: "MAI-UI 团队 · Alibaba Token Hub",
     technicalReport: "技术报告",
     watchDemos: "观看演示",
