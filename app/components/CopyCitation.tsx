@@ -57,8 +57,8 @@ export function CopyCitation({
           ? "已复制"
           : "Copied"
         : language === "zh"
-          ? "复制模板"
-          : "Copy template"}
+          ? "复制引用"
+          : "Copy citation"}
     </button>
   );
 }

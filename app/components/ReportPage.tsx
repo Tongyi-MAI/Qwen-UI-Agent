@@ -28,13 +28,11 @@ import {
   type TaskPerformanceCategory,
 } from "../siteContent";
 
-const citation = `@misc{qwenuiagent2026,
-  title  = {Qwen-UI-Agent Technical Report:
-            Toward Next-Generation Real-World-Centric
-            Foundation GUI Agents},
-  author = {MAI-UI Team},
-  year   = {2026},
-  note   = {Alibaba Token Hub}
+const citation = `@article{zhou2026qwen_ui_agent,
+  title={{Qwen-UI-Agent} Technical Report: Toward Next-Generation Real-World Centric Foundation {GUI} Agents},
+  author={Zhou, Hanzhang and Tong, Panrong and Zhang, Xu and Kong, Quyu and Cai, Chenglin and Xia, Tianyu and Zhang, Gongjie and Zhang, Jianan and Li, Long and Chen, Long and Wang, Lei and Dai, Gaole and Li, Pengxiang and Chen, Liangyu and Wang, Yue and Hoi, Steven},
+  journal={arXiv preprint arXiv:2607.28227},
+  year={2026}
 }`;
 
 const sectionIds = ["applications", "performance", "demos", "citation"];
@@ -2271,7 +2269,7 @@ export function ReportPage() {
             />
             <div className="code-card">
               <div className="code-head">
-                <span>BIBTEX · TEMPLATE</span>
+                <span>{language === "zh" ? "BIBTEX · 引用" : "BIBTEX · CITATION"}</span>
                 <CopyCitation text={citation} language={language} />
               </div>
               <pre>
