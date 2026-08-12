@@ -167,10 +167,7 @@
       }
 
       .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-        align-items: end;
-        gap: clamp(42px, 7vw, 96px);
+        display: block;
       }
 
       .eyebrow,
@@ -191,7 +188,7 @@
       }
 
       h1 {
-        max-width: 9ch;
+        max-width: none;
         margin: 0;
         font-size: clamp(4rem, 8vw, 7rem);
         line-height: 0.88;
@@ -199,34 +196,12 @@
         white-space: nowrap;
       }
 
-      .hero-copy {
-        padding: 27px 0 3px;
-        border-top: 3px solid var(--ink);
-      }
-
-      .hero-lead {
-        max-width: 32ch;
-        margin: 0 0 18px;
-        font-size: clamp(1.45rem, 2.4vw, 2.15rem);
-        font-weight: 690;
-        line-height: 1.17;
-        letter-spacing: -0.035em;
-      }
-
-      .hero-description {
-        max-width: 58ch;
-        margin: 0;
-        color: var(--muted);
-        font-size: 16px;
-      }
-
       .language-note {
         display: grid;
-        grid-column: 1 / -1;
         grid-template-columns: auto 1fr;
         gap: 18px;
         align-items: center;
-        margin-top: 44px;
+        margin-top: 38px;
         padding: 20px 22px;
         border: 1px solid #cbc5eb;
         border-left: 4px solid var(--accent);
@@ -255,8 +230,6 @@
       .archive-heading {
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
-        gap: 32px;
         margin-bottom: 28px;
       }
 
@@ -274,14 +247,6 @@
         letter-spacing: -0.055em;
       }
 
-      .archive-heading p:last-child {
-        max-width: 42ch;
-        margin: 0 0 3px;
-        color: var(--muted);
-        font-size: 14px;
-        text-align: right;
-      }
-
       .issue-list {
         display: grid;
         gap: 16px;
@@ -290,7 +255,7 @@
       .issue-card {
         display: grid;
         grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr) auto;
-        min-height: 230px;
+        min-height: 176px;
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 10px;
@@ -312,7 +277,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 29px 30px;
+        padding: 23px 27px;
         border-right: 1px solid var(--line);
         background: linear-gradient(145deg, rgba(94, 80, 220, 0.1), rgba(94, 80, 220, 0.025));
       }
@@ -326,7 +291,7 @@
       .issue-digits {
         color: var(--accent);
         font-family: var(--mono);
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 760;
         line-height: 0.9;
         letter-spacing: -0.08em;
@@ -336,7 +301,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 32px clamp(28px, 4vw, 54px);
+        padding: 23px clamp(26px, 3.5vw, 46px);
       }
 
       .issue-card-meta {
@@ -344,7 +309,7 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 10px 15px;
-        margin-bottom: 17px;
+        margin-bottom: 12px;
       }
 
       .latest-badge {
@@ -368,17 +333,10 @@
 
       .issue-card h3 {
         max-width: 26ch;
-        margin: 0 0 13px;
+        margin: 0 0 16px;
         font-size: clamp(1.65rem, 3vw, 2.6rem);
         line-height: 1.1;
         letter-spacing: -0.045em;
-      }
-
-      .issue-summary {
-        max-width: 65ch;
-        margin: 0 0 20px;
-        color: var(--muted);
-        font-size: 15px;
       }
 
       .issue-language {
@@ -390,7 +348,7 @@
 
       .issue-card-action {
         display: flex;
-        min-width: 190px;
+        min-width: 176px;
         align-items: center;
         justify-content: center;
         gap: 12px;
@@ -444,29 +402,14 @@
           padding-block: 68px 54px;
         }
 
-        .hero-grid {
-          grid-template-columns: 1fr;
-          gap: 38px;
-        }
-
         h1 {
           max-width: none;
           font-size: clamp(3.7rem, 15vw, 6.2rem);
           white-space: normal;
         }
 
-        .hero-copy {
-          max-width: 680px;
-        }
-
         .archive-heading {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .archive-heading p:last-child {
-          text-align: left;
+          display: block;
         }
 
         .issue-card {
@@ -528,14 +471,6 @@
           letter-spacing: -0.065em;
         }
 
-        .hero-lead {
-          font-size: 1.45rem;
-        }
-
-        .hero-description {
-          font-size: 15px;
-        }
-
         .language-note {
           grid-template-columns: 1fr;
           gap: 7px;
@@ -552,20 +487,20 @@
         }
 
         .issue-card-index {
-          min-height: 86px;
+          min-height: 76px;
           flex-direction: row;
           align-items: center;
-          padding: 20px 22px;
+          padding: 16px 22px;
           border-right: 0;
           border-bottom: 1px solid var(--line);
         }
 
         .issue-digits {
-          font-size: 42px;
+          font-size: 38px;
         }
 
         .issue-card-body {
-          padding: 26px 22px 30px;
+          padding: 23px 22px 25px;
         }
 
         .issue-card h3 {
@@ -640,19 +575,6 @@
           <h1>AI Newspaper</h1>
         </div>
 
-        <div class="hero-copy">
-          <p
-            class="hero-lead"
-            data-en="A weekly view of AI progress through the lens of GUI Agents."
-            data-zh="从 GUI Agent 视角观察 AI 进展的每周刊物。"
-          >A weekly view of AI progress through the lens of GUI Agents.</p>
-          <p
-            class="hero-description"
-            data-en="We track the research, systems, benchmarks, and product developments that matter for building real-world GUI agents."
-            data-zh="我们持续追踪与真实世界 GUI 智能体相关的研究、系统、基准与产品进展。"
-          >We track the research, systems, benchmarks, and product developments that matter for building real-world GUI agents.</p>
-        </div>
-
         <div class="language-note" role="note">
           <span
             class="language-note-label"
@@ -678,14 +600,10 @@
             >ISSUE ARCHIVE</p>
             <h2
               id="issue-archive-title"
-              data-en="Browse every issue."
-              data-zh="浏览每一期。"
-            >Browse every issue.</h2>
+              data-en="Browse AI Newspaper Issues"
+              data-zh="AI Newspaper 每期浏览"
+            >Browse AI Newspaper Issues</h2>
           </div>
-          <p
-            data-en="Each issue follows one week of AI progress from a GUI-Agent perspective."
-            data-zh="每一期都从 GUI Agent 视角记录一周内值得持续关注的 AI 进展。"
-          >Each issue follows one week of AI progress from a GUI-Agent perspective.</p>
         </div>
 
         <div class="issue-list">
@@ -723,11 +641,6 @@
                 data-en="Runtime Becomes a New Boundary for Agent Capability"
                 data-zh="运行时成为 Agent 能力的新边界"
               >Runtime Becomes a New Boundary for Agent Capability</h3>
-              <p
-                class="issue-summary"
-                data-en="Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses."
-                data-zh="聚焦运行时基础设施、长程智能体、可验证训练、记忆与评测 Harness。"
-              >Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses.</p>
               <p
                 class="issue-language"
                 data-en="ISSUE LANGUAGE · CHINESE"

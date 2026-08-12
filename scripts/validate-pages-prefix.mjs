@@ -94,7 +94,7 @@ const newspaperArchiveHtml = await readFile(
 
 for (const archiveText of [
   "MAI-UI AI Newspaper · Issue Archive",
-  "A weekly view of AI progress through the lens of GUI Agents.",
+  "Browse AI Newspaper Issues",
   "individual newspaper issues are published in Chinese",
   'data-en="ISSUE"',
   ">19</span>",
@@ -104,6 +104,18 @@ for (const archiveText of [
   if (!newspaperArchiveHtml.includes(archiveText)) {
     throw new Error(
       `The exported AI Newspaper archive is missing ${archiveText}.`,
+    );
+  }
+}
+
+for (const removedArchiveText of [
+  "A weekly view of AI progress through the lens of GUI Agents.",
+  "Each issue follows one week of AI progress from a GUI-Agent perspective.",
+  "Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses.",
+]) {
+  if (newspaperArchiveHtml.includes(`>${removedArchiveText}<`)) {
+    throw new Error(
+      `The exported AI Newspaper archive still renders ${removedArchiveText}.`,
     );
   }
 }

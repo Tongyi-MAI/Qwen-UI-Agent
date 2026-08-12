@@ -161,10 +161,8 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     "utf8",
   );
   assert.match(newspaperArchive, /MAI-UI AI Newspaper · Issue Archive/);
-  assert.match(
-    newspaperArchive,
-    /A weekly view of AI progress through the lens of GUI Agents\./,
-  );
+  assert.match(newspaperArchive, /Browse AI Newspaper Issues/);
+  assert.match(newspaperArchive, /AI Newspaper 每期浏览/);
   assert.match(
     newspaperArchive,
     /individual newspaper issues are published in Chinese/,
@@ -178,6 +176,18 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(newspaperArchive, /data-lang=["']zh["']/);
   assert.doesNotMatch(newspaperArchive, /http-equiv=["']refresh["']/);
   assert.doesNotMatch(newspaperArchive, /window\.location\.replace/);
+  assert.doesNotMatch(
+    newspaperArchive,
+    />A weekly view of AI progress through the lens of GUI Agents\.</,
+  );
+  assert.doesNotMatch(
+    newspaperArchive,
+    />Each issue follows one week of AI progress from a GUI-Agent perspective\.</,
+  );
+  assert.doesNotMatch(
+    newspaperArchive,
+    />Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses\.</,
+  );
 });
 
 test("includes publication sections, performance evidence, demos, and language controls", async () => {
