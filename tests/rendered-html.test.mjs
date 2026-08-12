@@ -92,6 +92,9 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.doesNotMatch(html, /BIBTEX · TEMPLATE|Copy template/);
   assert.match(html, /https:\/\/github\.com\/Tongyi-MAI\/MAI-UI/);
   assert.match(html, />GitHub</);
+  assert.match(html, />Weekly Newspaper</);
+  assert.match(html, /href=["']\/weekly-newspaper\/["']/);
+  assert.match(html, /Open Weekly Newspaper in a new tab/);
   assert.match(html, /hero-performance-mobile\.png/);
   assert.match(html, /hero-performance-desktop-web\.png/);
   assert.match(html, /Six representative Qwen-UI-Agent benchmark results/);
@@ -142,6 +145,16 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     ),
   );
   assert.ok(technicalReport.size > 0);
+
+  const weeklyNewspaper = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-19/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaper, /AI Newspaper · GUI \| Agent \| RL/);
+  assert.doesNotMatch(weeklyNewspaper, /data-src=["'][^"']+-解读\.html/);
 });
 
 test("includes publication sections, performance evidence, demos, and language controls", async () => {

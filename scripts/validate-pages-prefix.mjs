@@ -66,6 +66,7 @@ const requiredHomeReferences = [
   `${basePath}/brand-logos/`,
   `${basePath}/demos/`,
   `${basePath}/Qwen-UI-Agent-Technical-Report.pdf`,
+  `${basePath}/weekly-newspaper/`,
 ];
 
 for (const reference of requiredHomeReferences) {
@@ -79,6 +80,15 @@ if (!benchmarkHtml.includes(benchmarkFigure)) {
   throw new Error(
     `The exported MobileWorld-Real page is missing ${benchmarkFigure}.`,
   );
+}
+
+const latestNewspaperHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "issue-19", "index.html"),
+  "utf8",
+);
+
+if (!latestNewspaperHtml.includes("AI Newspaper · GUI | Agent | RL")) {
+  throw new Error("The exported Weekly Newspaper Issue 19 is missing its title.");
 }
 
 console.log(

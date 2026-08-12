@@ -1632,17 +1632,42 @@ export function ReportPage() {
 
       <header className="site-header">
         <div className="header-shell">
-          <a className="site-brand" href="#top" aria-label="Qwen-UI-Agent home">
-            <img
-              className="brand-mark"
-              src={siteAsset("/tongyi-mark.png")}
-              alt=""
-              width="34"
-              height="34"
-              aria-hidden="true"
-            />
-            <span className="brand-wordmark">Qwen-UI-Agent</span>
-          </a>
+          <div className="header-brand-group">
+            <a className="site-brand" href="#top" aria-label="Qwen-UI-Agent home">
+              <img
+                className="brand-mark"
+                src={siteAsset("/tongyi-mark.png")}
+                alt=""
+                width="34"
+                height="34"
+                aria-hidden="true"
+              />
+              <span className="brand-wordmark">Qwen-UI-Agent</span>
+            </a>
+
+            <a
+              className="weekly-newspaper-link"
+              href={siteAsset("/weekly-newspaper/")}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={
+                language === "zh"
+                  ? "在新窗口打开每周报刊"
+                  : "Open Weekly Newspaper in a new tab"
+              }
+            >
+              <span className="weekly-newspaper-mark" aria-hidden="true" />
+              <span className="weekly-newspaper-label weekly-newspaper-label--full">
+                {language === "zh" ? "每周报刊" : "Weekly Newspaper"}
+              </span>
+              <span className="weekly-newspaper-label weekly-newspaper-label--short">
+                {language === "zh" ? "周报" : "Weekly"}
+              </span>
+              <span className="weekly-newspaper-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </div>
 
           <nav
             className="site-nav"

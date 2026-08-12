@@ -115,9 +115,17 @@ video {
   width: min(1340px, calc(100% - 48px));
   min-height: 70px;
   align-items: center;
-  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  grid-template-columns: minmax(380px, 1fr) auto minmax(220px, 1fr);
   gap: 34px;
   margin-inline: auto;
+}
+
+.header-brand-group {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 22px;
+  justify-self: start;
 }
 
 .site-brand {
@@ -141,6 +149,74 @@ video {
   font-size: 15px;
   font-weight: 720;
   letter-spacing: -0.025em;
+}
+
+.weekly-newspaper-link {
+  position: relative;
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #45423f;
+  font-size: 13px;
+  font-weight: 680;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.weekly-newspaper-link:hover,
+.weekly-newspaper-link:focus-visible {
+  border-color: #b9b3aa;
+  background: #fffdfa;
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.weekly-newspaper-mark {
+  position: relative;
+  display: block;
+  width: 15px;
+  height: 13px;
+  flex: 0 0 15px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.weekly-newspaper-mark::before,
+.weekly-newspaper-mark::after {
+  position: absolute;
+  right: 2px;
+  left: 2px;
+  height: 1.5px;
+  background: currentColor;
+  content: "";
+}
+
+.weekly-newspaper-mark::before {
+  top: 3px;
+}
+
+.weekly-newspaper-mark::after {
+  top: 7px;
+}
+
+.weekly-newspaper-label--short {
+  display: none;
+}
+
+.weekly-newspaper-arrow {
+  color: #88827a;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .site-nav {
@@ -3593,6 +3669,33 @@ footer {
   .header-shell {
     min-height: 62px;
     gap: 10px;
+  }
+
+  .header-brand-group {
+    gap: 8px;
+  }
+
+  .site-header .brand-wordmark {
+    display: none;
+  }
+
+  .weekly-newspaper-link {
+    min-height: 40px;
+    gap: 6px;
+    padding: 0 9px;
+    font-size: 11.5px;
+  }
+
+  .weekly-newspaper-label--full {
+    display: none;
+  }
+
+  .weekly-newspaper-label--short {
+    display: inline;
+  }
+
+  .weekly-newspaper-arrow {
+    display: none;
   }
 
   .detail-header-shell {
