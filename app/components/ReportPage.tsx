@@ -1652,16 +1652,16 @@ export function ReportPage() {
               rel="noopener noreferrer"
               aria-label={
                 language === "zh"
-                  ? "在新窗口打开每周报刊"
-                  : "Open Weekly Newspaper in a new tab"
+                  ? "在新窗口打开每周 AI 报刊"
+                  : "Open Weekly AI Newspaper in a new tab"
               }
             >
               <span className="weekly-newspaper-mark" aria-hidden="true" />
               <span className="weekly-newspaper-label weekly-newspaper-label--full">
-                {language === "zh" ? "每周报刊" : "Weekly Newspaper"}
+                {language === "zh" ? "每周 AI 报刊" : "Weekly AI Newspaper"}
               </span>
               <span className="weekly-newspaper-label weekly-newspaper-label--short">
-                {language === "zh" ? "周报" : "Weekly"}
+                {language === "zh" ? "AI 周报" : "AI Weekly"}
               </span>
               <span className="weekly-newspaper-arrow" aria-hidden="true">
                 ↗

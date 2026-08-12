@@ -87,6 +87,36 @@ const latestNewspaperHtml = await readFile(
   "utf8",
 );
 
+const newspaperArchiveHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "index.html"),
+  "utf8",
+);
+
+for (const archiveText of [
+  "MAI-UI AI Newspaper · Issue Archive",
+  "A weekly view of AI progress through the lens of GUI Agents.",
+  "individual newspaper issues are published in Chinese",
+  'data-en="ISSUE"',
+  ">19</span>",
+  "LATEST",
+  "./issue-19/",
+]) {
+  if (!newspaperArchiveHtml.includes(archiveText)) {
+    throw new Error(
+      `The exported AI Newspaper archive is missing ${archiveText}.`,
+    );
+  }
+}
+
+if (
+  newspaperArchiveHtml.includes("http-equiv=\"refresh\"") ||
+  newspaperArchiveHtml.includes("window.location.replace")
+) {
+  throw new Error(
+    "The exported AI Newspaper archive still redirects directly to one issue.",
+  );
+}
+
 if (!latestNewspaperHtml.includes("AI Newspaper · GUI | Agent | RL")) {
   throw new Error("The exported Weekly Newspaper Issue 19 is missing its title.");
 }

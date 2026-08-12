@@ -3,14 +3,829 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="0; url=./issue-19/" />
-    <meta name="robots" content="noindex" />
-    <title>Qwen-UI-Agent Weekly Newspaper</title>
-    <script>
-      window.location.replace(`./issue-19/${window.location.hash}`);
-    </script>
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f3ec" />
+    <meta
+      name="description"
+      content="The MAI-UI Team AI Newspaper: a weekly view of AI progress through the lens of GUI Agents."
+    />
+    <link
+      rel="canonical"
+      href="https://tongyi-mai.github.io/Qwen-UI-Agent/weekly-newspaper/"
+    />
+    <title>MAI-UI AI Newspaper · Issue Archive</title>
+    <style>
+      :root {
+        --paper: #f6f3ec;
+        --surface: #fffdfa;
+        --ink: #171717;
+        --muted: #6c6862;
+        --line: #d8d2c8;
+        --line-strong: #9f9a91;
+        --accent: #5e50dc;
+        --accent-soft: #eeebff;
+        --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--paper);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          radial-gradient(circle at 50% -24%, rgba(94, 80, 220, 0.07), transparent 35rem),
+          var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.55;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid rgba(94, 80, 220, 0.35);
+        outline-offset: 3px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(216, 210, 200, 0.9);
+        background: rgba(246, 243, 236, 0.9);
+        backdrop-filter: blur(18px) saturate(1.2);
+      }
+
+      .header-shell,
+      .page-shell {
+        width: min(1180px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      .header-shell {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        gap: 11px;
+        font-size: 16px;
+        font-weight: 760;
+        letter-spacing: -0.025em;
+      }
+
+      .brand img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+
+      .brand-separator {
+        width: 1px;
+        height: 20px;
+        background: var(--line);
+      }
+
+      .brand-publication {
+        color: #45413c;
+        font-weight: 650;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .home-link {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        gap: 7px;
+        color: #4e4a45;
+        font-size: 14px;
+        font-weight: 660;
+      }
+
+      .home-link:hover {
+        color: var(--ink);
+      }
+
+      .language-switch {
+        display: inline-flex;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255, 253, 250, 0.78);
+      }
+
+      .language-switch button {
+        min-width: 48px;
+        min-height: 36px;
+        padding: 0 11px;
+        border: 0;
+        border-radius: 4px;
+        background: transparent;
+        color: #67625c;
+        cursor: pointer;
+        font: 700 13px/1 var(--sans);
+      }
+
+      .language-switch button[aria-pressed="true"] {
+        background: var(--ink);
+        color: white;
+      }
+
+      .hero {
+        padding: 94px 0 72px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        align-items: end;
+        gap: clamp(42px, 7vw, 96px);
+      }
+
+      .eyebrow,
+      .section-index,
+      .issue-number,
+      .issue-language,
+      .latest-badge {
+        font-family: var(--mono);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 9ch;
+        margin: 0;
+        font-size: clamp(4rem, 8vw, 7rem);
+        line-height: 0.88;
+        letter-spacing: -0.07em;
+        white-space: nowrap;
+      }
+
+      .hero-copy {
+        padding: 27px 0 3px;
+        border-top: 3px solid var(--ink);
+      }
+
+      .hero-lead {
+        max-width: 32ch;
+        margin: 0 0 18px;
+        font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+        font-weight: 690;
+        line-height: 1.17;
+        letter-spacing: -0.035em;
+      }
+
+      .hero-description {
+        max-width: 58ch;
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .language-note {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: center;
+        margin-top: 44px;
+        padding: 20px 22px;
+        border: 1px solid #cbc5eb;
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 253, 250, 0.75);
+      }
+
+      .language-note-label {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .language-note p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 620;
+      }
+
+      main {
+        padding: 76px 0 110px;
+      }
+
+      .archive-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 32px;
+        margin-bottom: 28px;
+      }
+
+      .section-index {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4.2vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.055em;
+      }
+
+      .archive-heading p:last-child {
+        max-width: 42ch;
+        margin: 0 0 3px;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: right;
+      }
+
+      .issue-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .issue-card {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr) auto;
+        min-height: 230px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 253, 250, 0.86);
+        box-shadow: 0 12px 32px rgba(37, 32, 25, 0.035);
+        transition:
+          border-color 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+
+      .issue-card:hover {
+        border-color: #aaa39a;
+        box-shadow: 0 18px 38px rgba(37, 32, 25, 0.07);
+        transform: translateY(-2px);
+      }
+
+      .issue-card-index {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 29px 30px;
+        border-right: 1px solid var(--line);
+        background: linear-gradient(145deg, rgba(94, 80, 220, 0.1), rgba(94, 80, 220, 0.025));
+      }
+
+      .issue-number {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .issue-digits {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 56px;
+        font-weight: 760;
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+
+      .issue-card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px clamp(28px, 4vw, 54px);
+      }
+
+      .issue-card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 15px;
+        margin-bottom: 17px;
+      }
+
+      .latest-badge {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        padding: 0 9px;
+        border-radius: 4px;
+        background: var(--accent);
+        color: white;
+        font-size: 10px;
+        font-weight: 850;
+      }
+
+      .issue-date {
+        color: #4e4944;
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .issue-card h3 {
+        max-width: 26ch;
+        margin: 0 0 13px;
+        font-size: clamp(1.65rem, 3vw, 2.6rem);
+        line-height: 1.1;
+        letter-spacing: -0.045em;
+      }
+
+      .issue-summary {
+        max-width: 65ch;
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .issue-language {
+        margin: 0;
+        color: #7b756d;
+        font-size: 10px;
+        font-weight: 760;
+      }
+
+      .issue-card-action {
+        display: flex;
+        min-width: 190px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 28px 32px;
+        border-left: 1px solid var(--line);
+        font-size: 15px;
+        font-weight: 740;
+      }
+
+      .issue-card-action span:last-child {
+        color: var(--accent);
+        font-size: 22px;
+        transition: transform 180ms ease;
+      }
+
+      .issue-card:hover .issue-card-action span:last-child {
+        transform: translateX(4px);
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-shell {
+        display: flex;
+        min-height: 96px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .footer-shell strong {
+        color: var(--ink);
+      }
+
+      .footer-home {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 700;
+      }
+
+      .footer-home:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 820px) {
+        .hero {
+          padding-block: 68px 54px;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+
+        h1 {
+          max-width: none;
+          font-size: clamp(3.7rem, 15vw, 6.2rem);
+          white-space: normal;
+        }
+
+        .hero-copy {
+          max-width: 680px;
+        }
+
+        .archive-heading {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .archive-heading p:last-child {
+          text-align: left;
+        }
+
+        .issue-card {
+          grid-template-columns: 120px minmax(0, 1fr);
+        }
+
+        .issue-card-action {
+          grid-column: 1 / -1;
+          min-width: 0;
+          min-height: 64px;
+          justify-content: space-between;
+          padding: 0 26px;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .header-shell,
+        .page-shell {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .header-shell {
+          min-height: 64px;
+          gap: 10px;
+        }
+
+        .brand-publication,
+        .brand-separator,
+        .home-link {
+          display: none;
+        }
+
+        .brand {
+          font-size: 14px;
+        }
+
+        .brand img {
+          width: 31px;
+          height: 31px;
+        }
+
+        .header-actions {
+          gap: 8px;
+        }
+
+        .language-switch button {
+          min-width: 43px;
+          padding-inline: 8px;
+        }
+
+        .hero {
+          padding-block: 52px 42px;
+        }
+
+        h1 {
+          font-size: clamp(2.9rem, 14.4vw, 4rem);
+          letter-spacing: -0.065em;
+        }
+
+        .hero-lead {
+          font-size: 1.45rem;
+        }
+
+        .hero-description {
+          font-size: 15px;
+        }
+
+        .language-note {
+          grid-template-columns: 1fr;
+          gap: 7px;
+          margin-top: 34px;
+          padding: 17px 17px 17px 18px;
+        }
+
+        main {
+          padding-block: 56px 80px;
+        }
+
+        .issue-card {
+          display: block;
+        }
+
+        .issue-card-index {
+          min-height: 86px;
+          flex-direction: row;
+          align-items: center;
+          padding: 20px 22px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .issue-digits {
+          font-size: 42px;
+        }
+
+        .issue-card-body {
+          padding: 26px 22px 30px;
+        }
+
+        .issue-card h3 {
+          font-size: 1.8rem;
+        }
+
+        .footer-shell {
+          min-height: 122px;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 4px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p><a href="./issue-19/">Open the latest Weekly Newspaper</a></p>
+    <header class="site-header">
+      <div class="header-shell">
+        <a
+          class="brand"
+          href="../"
+          data-aria-en="Return to the Qwen-UI-Agent homepage"
+          data-aria-zh="返回 Qwen-UI-Agent 主页"
+          aria-label="Return to the Qwen-UI-Agent homepage"
+        >
+          <img src="../tongyi-mark.png" alt="" width="34" height="34" />
+          <span>MAI-UI</span>
+          <span class="brand-separator" aria-hidden="true"></span>
+          <span class="brand-publication">AI Newspaper</span>
+        </a>
+
+        <div class="header-actions">
+          <a class="home-link" href="../">
+            <span aria-hidden="true">←</span>
+            <span
+              data-en="Qwen-UI-Agent"
+              data-zh="返回主页"
+            >Qwen-UI-Agent</span>
+          </a>
+          <div
+            class="language-switch"
+            role="group"
+            aria-label="Language"
+            data-aria-en="Language"
+            data-aria-zh="语言"
+          >
+            <button type="button" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="page-shell hero-grid">
+        <div>
+          <p
+            class="eyebrow"
+            data-en="MAI-UI TEAM · WEEKLY PUBLICATION"
+            data-zh="MAI-UI 团队 · 每周刊物"
+          >MAI-UI TEAM · WEEKLY PUBLICATION</p>
+          <h1>AI Newspaper</h1>
+        </div>
+
+        <div class="hero-copy">
+          <p
+            class="hero-lead"
+            data-en="A weekly view of AI progress through the lens of GUI Agents."
+            data-zh="从 GUI Agent 视角观察 AI 进展的每周刊物。"
+          >A weekly view of AI progress through the lens of GUI Agents.</p>
+          <p
+            class="hero-description"
+            data-en="We track the research, systems, benchmarks, and product developments that matter for building real-world GUI agents."
+            data-zh="我们持续追踪与真实世界 GUI 智能体相关的研究、系统、基准与产品进展。"
+          >We track the research, systems, benchmarks, and product developments that matter for building real-world GUI agents.</p>
+        </div>
+
+        <div class="language-note" role="note">
+          <span
+            class="language-note-label"
+            data-en="LANGUAGE NOTE"
+            data-zh="语言说明"
+          >LANGUAGE NOTE</span>
+          <p
+            data-en="For consistent weekly tracking, individual newspaper issues are published in Chinese."
+            data-zh="为便于长期、连续追踪，每一期 Newspaper 正文均以中文呈现。"
+          >For consistent weekly tracking, individual newspaper issues are published in Chinese.</p>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="page-shell" aria-labelledby="issue-archive-title">
+        <div class="archive-heading">
+          <div>
+            <p
+              class="section-index"
+              data-en="ISSUE ARCHIVE"
+              data-zh="期刊归档"
+            >ISSUE ARCHIVE</p>
+            <h2
+              id="issue-archive-title"
+              data-en="Browse every issue."
+              data-zh="浏览每一期。"
+            >Browse every issue.</h2>
+          </div>
+          <p
+            data-en="Each issue follows one week of AI progress from a GUI-Agent perspective."
+            data-zh="每一期都从 GUI Agent 视角记录一周内值得持续关注的 AI 进展。"
+          >Each issue follows one week of AI progress from a GUI-Agent perspective.</p>
+        </div>
+
+        <div class="issue-list">
+          <a
+            class="issue-card"
+            href="./issue-19/"
+            data-aria-en="Read Issue 19, published in Chinese"
+            data-aria-zh="阅读中文第 19 期"
+            aria-label="Read Issue 19, published in Chinese"
+          >
+            <div class="issue-card-index">
+              <span
+                class="issue-number"
+                data-en="ISSUE"
+                data-zh="第 19 期"
+              >ISSUE</span>
+              <span class="issue-digits" aria-hidden="true">19</span>
+            </div>
+
+            <div class="issue-card-body">
+              <div class="issue-card-meta">
+                <span
+                  class="latest-badge"
+                  data-en="LATEST"
+                  data-zh="最新一期"
+                >LATEST</span>
+                <time
+                  class="issue-date"
+                  datetime="2026-08-03/2026-08-09"
+                  data-en="AUG 3—9, 2026"
+                  data-zh="2026 年 8 月 3 日—8 月 9 日"
+                >AUG 3—9, 2026</time>
+              </div>
+              <h3
+                data-en="Runtime Becomes a New Boundary for Agent Capability"
+                data-zh="运行时成为 Agent 能力的新边界"
+              >Runtime Becomes a New Boundary for Agent Capability</h3>
+              <p
+                class="issue-summary"
+                data-en="Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses."
+                data-zh="聚焦运行时基础设施、长程智能体、可验证训练、记忆与评测 Harness。"
+              >Runtime infrastructure, long-horizon agents, verifiable training, memory, and evaluation harnesses.</p>
+              <p
+                class="issue-language"
+                data-en="ISSUE LANGUAGE · CHINESE"
+                data-zh="正文语言 · 中文"
+              >ISSUE LANGUAGE · CHINESE</p>
+            </div>
+
+            <div class="issue-card-action" aria-hidden="true">
+              <span
+                data-en="Read Issue 19"
+                data-zh="阅读第 19 期"
+              >Read Issue 19</span>
+              <span>→</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-shell">
+        <p><strong>MAI-UI Team</strong> · Alibaba Token Hub</p>
+        <a
+          class="footer-home"
+          href="../"
+          data-en="Qwen-UI-Agent homepage →"
+          data-zh="返回 Qwen-UI-Agent 主页 →"
+        >Qwen-UI-Agent homepage →</a>
+      </div>
+    </footer>
+
+    <noscript>
+      <p style="padding: 16px; text-align: center">
+        Language switching requires JavaScript. / 中英文切换需要启用 JavaScript。
+      </p>
+    </noscript>
+
+    <script>
+      (() => {
+        const storageKey = "qwen-ui-agent-language";
+        const languageButtons = Array.from(
+          document.querySelectorAll("[data-lang]"),
+        );
+        const translatedNodes = Array.from(
+          document.querySelectorAll("[data-en][data-zh]"),
+        );
+        const labelledNodes = Array.from(
+          document.querySelectorAll("[data-aria-en][data-aria-zh]"),
+        );
+
+        function applyLanguage(language) {
+          const nextLanguage = language === "zh" ? "zh" : "en";
+          document.documentElement.lang = nextLanguage === "zh" ? "zh-CN" : "en";
+          document.title =
+            nextLanguage === "zh"
+              ? "MAI-UI AI Newspaper · 期刊归档"
+              : "MAI-UI AI Newspaper · Issue Archive";
+
+          translatedNodes.forEach((node) => {
+            node.textContent = node.dataset[nextLanguage];
+          });
+
+          labelledNodes.forEach((node) => {
+            node.setAttribute("aria-label", node.dataset[`aria${nextLanguage === "zh" ? "Zh" : "En"}`]);
+          });
+
+          languageButtons.forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.lang === nextLanguage),
+            );
+          });
+
+          try {
+            window.localStorage.setItem(storageKey, nextLanguage);
+          } catch (_) {
+            // Language switching still works when storage is unavailable.
+          }
+        }
+
+        let initialLanguage = "en";
+        try {
+          const storedLanguage = window.localStorage.getItem(storageKey);
+          if (storedLanguage === "en" || storedLanguage === "zh") {
+            initialLanguage = storedLanguage;
+          }
+        } catch (_) {
+          // Keep the English default when storage is unavailable.
+        }
+
+        languageButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            applyLanguage(button.dataset.lang);
+          });
+        });
+
+        applyLanguage(initialLanguage);
+      })();
+    </script>
   </body>
 </html>

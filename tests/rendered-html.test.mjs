@@ -92,9 +92,9 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.doesNotMatch(html, /BIBTEX · TEMPLATE|Copy template/);
   assert.match(html, /https:\/\/github\.com\/Tongyi-MAI\/MAI-UI/);
   assert.match(html, />GitHub</);
-  assert.match(html, />Weekly Newspaper</);
+  assert.match(html, />Weekly AI Newspaper</);
   assert.match(html, /href=["']\/weekly-newspaper\/["']/);
-  assert.match(html, /Open Weekly Newspaper in a new tab/);
+  assert.match(html, /Open Weekly AI Newspaper in a new tab/);
   assert.match(html, /hero-performance-mobile\.png/);
   assert.match(html, /hero-performance-desktop-web\.png/);
   assert.match(html, /Six representative Qwen-UI-Agent benchmark results/);
@@ -155,6 +155,29 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   );
   assert.match(weeklyNewspaper, /AI Newspaper · GUI \| Agent \| RL/);
   assert.doesNotMatch(weeklyNewspaper, /data-src=["'][^"']+-解读\.html/);
+
+  const newspaperArchive = await readFile(
+    new URL("../public/weekly-newspaper/index.html", import.meta.url),
+    "utf8",
+  );
+  assert.match(newspaperArchive, /MAI-UI AI Newspaper · Issue Archive/);
+  assert.match(
+    newspaperArchive,
+    /A weekly view of AI progress through the lens of GUI Agents\./,
+  );
+  assert.match(
+    newspaperArchive,
+    /individual newspaper issues are published in Chinese/,
+  );
+  assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />19<\/span>/);
+  assert.match(newspaperArchive, /LATEST/);
+  assert.match(newspaperArchive, /2026 年 8 月 3 日—8 月 9 日/);
+  assert.match(newspaperArchive, /href=["']\.\/issue-19\/["']/);
+  assert.match(newspaperArchive, /data-lang=["']en["']/);
+  assert.match(newspaperArchive, /data-lang=["']zh["']/);
+  assert.doesNotMatch(newspaperArchive, /http-equiv=["']refresh["']/);
+  assert.doesNotMatch(newspaperArchive, /window\.location\.replace/);
 });
 
 test("includes publication sections, performance evidence, demos, and language controls", async () => {
