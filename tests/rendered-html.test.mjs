@@ -146,15 +146,30 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   );
   assert.ok(technicalReport.size > 0);
 
-  const weeklyNewspaper = await readFile(
+  const weeklyNewspaperIssue19 = await readFile(
     new URL(
       "../public/weekly-newspaper/issue-19/index.html",
       import.meta.url,
     ),
     "utf8",
   );
-  assert.match(weeklyNewspaper, /AI Newspaper · GUI \| Agent \| RL/);
-  assert.doesNotMatch(weeklyNewspaper, /data-src=["'][^"']+-解读\.html/);
+  assert.match(weeklyNewspaperIssue19, /AI Newspaper · GUI \| Agent \| RL/);
+  assert.doesNotMatch(
+    weeklyNewspaperIssue19,
+    /data-src=["'][^"']+-解读\.html/,
+  );
+
+  const weeklyNewspaperIssue20 = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-20/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaperIssue20, /AI Newspaper · Issue 20/);
+  assert.match(weeklyNewspaperIssue20, /联合系统成为 Agent 能力的新标尺/);
+  assert.match(weeklyNewspaperIssue20, /2026\.08\.10/);
+  assert.match(weeklyNewspaperIssue20, /08\.16/);
 
   const newspaperArchive = await readFile(
     new URL("../public/weekly-newspaper/index.html", import.meta.url),
@@ -168,9 +183,13 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /individual newspaper issues are published in Chinese/,
   );
   assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />20<\/span>/);
   assert.match(newspaperArchive, />19<\/span>/);
   assert.match(newspaperArchive, /LATEST/);
+  assert.equal((newspaperArchive.match(/>LATEST<\/span>/g) ?? []).length, 1);
+  assert.match(newspaperArchive, /2026 年 8 月 10 日—8 月 16 日/);
   assert.match(newspaperArchive, /2026 年 8 月 3 日—8 月 9 日/);
+  assert.match(newspaperArchive, /href=["']\.\/issue-20\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-19\/["']/);
   assert.match(newspaperArchive, /data-lang=["']en["']/);
   assert.match(newspaperArchive, /data-lang=["']zh["']/);

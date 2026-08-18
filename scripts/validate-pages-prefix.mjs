@@ -82,8 +82,13 @@ if (!benchmarkHtml.includes(benchmarkFigure)) {
   );
 }
 
-const latestNewspaperHtml = await readFile(
+const newspaperIssue19Html = await readFile(
   path.join(outputDir, "weekly-newspaper", "issue-19", "index.html"),
+  "utf8",
+);
+
+const latestNewspaperHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "issue-20", "index.html"),
   "utf8",
 );
 
@@ -97,8 +102,11 @@ for (const archiveText of [
   "Browse AI Newspaper Issues",
   "individual newspaper issues are published in Chinese",
   'data-en="ISSUE"',
+  ">20</span>",
   ">19</span>",
   "LATEST",
+  "2026 年 8 月 10 日—8 月 16 日",
+  "./issue-20/",
   "./issue-19/",
 ]) {
   if (!newspaperArchiveHtml.includes(archiveText)) {
@@ -129,8 +137,25 @@ if (
   );
 }
 
-if (!latestNewspaperHtml.includes("AI Newspaper · GUI | Agent | RL")) {
+if ((newspaperArchiveHtml.match(/>LATEST<\/span>/g) ?? []).length !== 1) {
+  throw new Error(
+    "The exported AI Newspaper archive must mark exactly one issue as latest.",
+  );
+}
+
+if (!newspaperIssue19Html.includes("AI Newspaper · GUI | Agent | RL")) {
   throw new Error("The exported Weekly Newspaper Issue 19 is missing its title.");
+}
+
+if (
+  !latestNewspaperHtml.includes("AI Newspaper · Issue 20") ||
+  !latestNewspaperHtml.includes("联合系统成为 Agent 能力的新标尺") ||
+  !latestNewspaperHtml.includes("2026.08.10") ||
+  !latestNewspaperHtml.includes("08.16")
+) {
+  throw new Error(
+    "The exported Weekly Newspaper Issue 20 is missing its publication metadata.",
+  );
 }
 
 console.log(
