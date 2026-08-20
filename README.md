@@ -1,10 +1,28 @@
 # Qwen-UI-Agent — Technical Report Website
 
-A concise, application-first website template distilled from the current
-Qwen-UI-Agent LaTeX draft. Its narrative runs from an interactive real-world
-capability carousel to benchmark results, broader general and agentic
-capabilities, playable demos, and release materials, with a complete English /
-中文 interface.
+> [!IMPORTANT]
+> **Website source only — this is not the Qwen-UI-Agent implementation repository.**
+>
+> This repository contains only the source code and static assets for the
+> [Qwen-UI-Agent project website](https://tongyi-mai.github.io/Qwen-UI-Agent/),
+> which is hosted with GitHub Pages. It does **not** contain the model,
+> training code, or agent implementation.
+>
+> **Looking for the Qwen-UI-Agent code? Visit the official project repository:**
+> [**Tongyi-MAI/MAI-UI**](https://github.com/Tongyi-MAI/MAI-UI)
+>
+> **本仓库仅为网站源码，并非 Qwen-UI-Agent 的项目实现代码仓。**
+>
+> 本仓库只包含
+> [Qwen-UI-Agent 项目网站](https://tongyi-mai.github.io/Qwen-UI-Agent/)
+> 在 GitHub Pages 上使用的网页源代码与静态资源，**不包含模型、训练代码或智能体实现代码**。
+>
+> **如需查找 Qwen-UI-Agent 的项目代码，请访问官方项目代码仓：**
+> [**Tongyi-MAI/MAI-UI**](https://github.com/Tongyi-MAI/MAI-UI)
+
+This repository powers the bilingual Qwen-UI-Agent technical report website.
+The site presents real-world capabilities, benchmark results, broader general
+and agentic capabilities, playable demos, and release materials.
 
 ## Local preview
 
