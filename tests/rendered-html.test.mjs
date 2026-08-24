@@ -171,6 +171,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(weeklyNewspaperIssue20, /2026\.08\.10/);
   assert.match(weeklyNewspaperIssue20, /08\.16/);
 
+  const weeklyNewspaperIssue21 = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-21/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaperIssue21, /AI Newspaper · Issue 21/);
+  assert.match(
+    weeklyNewspaperIssue21,
+    /DeepSeek 将单图控制在 384 Tokens 内，GUI Agent 开始重算任务成本/,
+  );
+  assert.match(weeklyNewspaperIssue21, /2026\.08\.17/);
+  assert.match(weeklyNewspaperIssue21, /08\.22/);
+
   const newspaperArchive = await readFile(
     new URL("../public/weekly-newspaper/index.html", import.meta.url),
     "utf8",
@@ -183,12 +198,15 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /individual newspaper issues are published in Chinese/,
   );
   assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />21<\/span>/);
   assert.match(newspaperArchive, />20<\/span>/);
   assert.match(newspaperArchive, />19<\/span>/);
   assert.match(newspaperArchive, /LATEST/);
   assert.equal((newspaperArchive.match(/>LATEST<\/span>/g) ?? []).length, 1);
+  assert.match(newspaperArchive, /2026 年 8 月 17 日—8 月 22 日/);
   assert.match(newspaperArchive, /2026 年 8 月 10 日—8 月 16 日/);
   assert.match(newspaperArchive, /2026 年 8 月 3 日—8 月 9 日/);
+  assert.match(newspaperArchive, /href=["']\.\/issue-21\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-20\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-19\/["']/);
   assert.match(newspaperArchive, /data-lang=["']en["']/);
