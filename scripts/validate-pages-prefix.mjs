@@ -92,8 +92,13 @@ const newspaperIssue20Html = await readFile(
   "utf8",
 );
 
-const latestNewspaperHtml = await readFile(
+const newspaperIssue21Html = await readFile(
   path.join(outputDir, "weekly-newspaper", "issue-21", "index.html"),
+  "utf8",
+);
+
+const latestNewspaperHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "issue-22", "index.html"),
   "utf8",
 );
 
@@ -107,10 +112,13 @@ for (const archiveText of [
   "Browse AI Newspaper Issues",
   "individual newspaper issues are published in Chinese",
   'data-en="ISSUE"',
+  ">22</span>",
   ">21</span>",
   ">20</span>",
   ">19</span>",
   "LATEST",
+  "2026 年 8 月 24 日—8 月 30 日",
+  "./issue-22/",
   "2026 年 8 月 17 日—8 月 22 日",
   "./issue-21/",
   "2026 年 8 月 10 日—8 月 16 日",
@@ -167,15 +175,28 @@ if (
 }
 
 if (
-  !latestNewspaperHtml.includes("AI Newspaper · Issue 21") ||
-  !latestNewspaperHtml.includes(
+  !newspaperIssue21Html.includes("AI Newspaper · Issue 21") ||
+  !newspaperIssue21Html.includes(
     "DeepSeek 将单图控制在 384 Tokens 内，GUI Agent 开始重算任务成本",
   ) ||
-  !latestNewspaperHtml.includes("2026.08.17") ||
-  !latestNewspaperHtml.includes("08.22")
+  !newspaperIssue21Html.includes("2026.08.17") ||
+  !newspaperIssue21Html.includes("08.22")
 ) {
   throw new Error(
     "The exported Weekly Newspaper Issue 21 is missing its publication metadata.",
+  );
+}
+
+if (
+  !latestNewspaperHtml.includes("AI Newspaper · Issue 22") ||
+  !latestNewspaperHtml.includes(
+    "GLM-5.3-Flash 与 Qwen3.8-Flash-Next 同周发布：开放 Agent 模型转向效率竞争",
+  ) ||
+  !latestNewspaperHtml.includes("2026.08.24") ||
+  !latestNewspaperHtml.includes("08.30")
+) {
+  throw new Error(
+    "The exported Weekly Newspaper Issue 22 is missing its publication metadata.",
   );
 }
 
