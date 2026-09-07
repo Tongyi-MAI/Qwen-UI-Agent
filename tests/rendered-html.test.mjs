@@ -201,6 +201,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(weeklyNewspaperIssue22, /2026\.08\.24/);
   assert.match(weeklyNewspaperIssue22, /08\.30/);
 
+  const weeklyNewspaperIssue23 = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-23/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaperIssue23, /AI Newspaper · Issue 23/);
+  assert.match(
+    weeklyNewspaperIssue23.replace(/<[^>]+>/g, ""),
+    /GPT-6 Astra 发布：电脑操作提速，跨窗口历史开始可检索/,
+  );
+  assert.match(weeklyNewspaperIssue23, /2026\.08\.31/);
+  assert.match(weeklyNewspaperIssue23, /09\.06/);
+
   const newspaperArchive = await readFile(
     new URL("../public/weekly-newspaper/index.html", import.meta.url),
     "utf8",
@@ -213,16 +228,19 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /individual newspaper issues are published in Chinese/,
   );
   assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />23<\/span>/);
   assert.match(newspaperArchive, />22<\/span>/);
   assert.match(newspaperArchive, />21<\/span>/);
   assert.match(newspaperArchive, />20<\/span>/);
   assert.match(newspaperArchive, />19<\/span>/);
   assert.match(newspaperArchive, /LATEST/);
   assert.equal((newspaperArchive.match(/>LATEST<\/span>/g) ?? []).length, 1);
+  assert.match(newspaperArchive, /2026 年 8 月 31 日—9 月 6 日/);
   assert.match(newspaperArchive, /2026 年 8 月 24 日—8 月 30 日/);
   assert.match(newspaperArchive, /2026 年 8 月 17 日—8 月 22 日/);
   assert.match(newspaperArchive, /2026 年 8 月 10 日—8 月 16 日/);
   assert.match(newspaperArchive, /2026 年 8 月 3 日—8 月 9 日/);
+  assert.match(newspaperArchive, /href=["']\.\/issue-23\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-22\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-21\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-20\/["']/);
