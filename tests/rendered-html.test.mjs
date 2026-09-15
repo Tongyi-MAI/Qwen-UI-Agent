@@ -216,6 +216,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(weeklyNewspaperIssue23, /2026\.08\.31/);
   assert.match(weeklyNewspaperIssue23, /09\.06/);
 
+  const weeklyNewspaperIssue24 = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-24/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaperIssue24, /AI Newspaper · Issue 24/);
+  assert.match(
+    weeklyNewspaperIssue24.replace(/<[^>]+>/g, ""),
+    /本周AI进展总结/,
+  );
+  assert.match(weeklyNewspaperIssue24, /datetime="2026-09-07"/);
+  assert.match(weeklyNewspaperIssue24, /datetime="2026-09-13"/);
+
   const newspaperArchive = await readFile(
     new URL("../public/weekly-newspaper/index.html", import.meta.url),
     "utf8",
@@ -228,6 +243,7 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /individual newspaper issues are published in Chinese/,
   );
   assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />24<\/span>/);
   assert.match(newspaperArchive, />23<\/span>/);
   assert.match(newspaperArchive, />22<\/span>/);
   assert.match(newspaperArchive, />21<\/span>/);
@@ -235,11 +251,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(newspaperArchive, />19<\/span>/);
   assert.match(newspaperArchive, /LATEST/);
   assert.equal((newspaperArchive.match(/>LATEST<\/span>/g) ?? []).length, 1);
+  const latestArchiveCard = newspaperArchive.match(
+    /<a\s+class="issue-card"[\s\S]*?<\/a>/,
+  )?.[0];
+  assert.ok(latestArchiveCard);
+  assert.match(latestArchiveCard, /href="\.\/issue-24\/"/);
+  assert.match(latestArchiveCard, /class="latest-badge"/);
+  assert.match(newspaperArchive, /2026 年 9 月 7 日—9 月 13 日/);
+  assert.match(newspaperArchive, /data-en="This Week in AI"/);
+  assert.match(newspaperArchive, /data-zh="本周AI进展总结"/);
   assert.match(newspaperArchive, /2026 年 8 月 31 日—9 月 6 日/);
   assert.match(newspaperArchive, /2026 年 8 月 24 日—8 月 30 日/);
   assert.match(newspaperArchive, /2026 年 8 月 17 日—8 月 22 日/);
   assert.match(newspaperArchive, /2026 年 8 月 10 日—8 月 16 日/);
   assert.match(newspaperArchive, /2026 年 8 月 3 日—8 月 9 日/);
+  assert.match(newspaperArchive, /href=["']\.\/issue-24\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-23\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-22\/["']/);
   assert.match(newspaperArchive, /href=["']\.\/issue-21\/["']/);

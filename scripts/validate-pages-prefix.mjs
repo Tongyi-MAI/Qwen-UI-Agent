@@ -102,8 +102,13 @@ const newspaperIssue22Html = await readFile(
   "utf8",
 );
 
-const latestNewspaperHtml = await readFile(
+const newspaperIssue23Html = await readFile(
   path.join(outputDir, "weekly-newspaper", "issue-23", "index.html"),
+  "utf8",
+);
+
+const latestNewspaperHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "issue-24", "index.html"),
   "utf8",
 );
 
@@ -117,12 +122,17 @@ for (const archiveText of [
   "Browse AI Newspaper Issues",
   "individual newspaper issues are published in Chinese",
   'data-en="ISSUE"',
+  ">24</span>",
   ">23</span>",
   ">22</span>",
   ">21</span>",
   ">20</span>",
   ">19</span>",
   "LATEST",
+  "2026 年 9 月 7 日—9 月 13 日",
+  "./issue-24/",
+  "This Week in AI",
+  "本周AI进展总结",
   "2026 年 8 月 31 日—9 月 6 日",
   "./issue-23/",
   "2026 年 8 月 24 日—8 月 30 日",
@@ -209,16 +219,37 @@ if (
 }
 
 if (
-  !latestNewspaperHtml.includes("AI Newspaper · Issue 23") ||
-  !latestNewspaperHtml
+  !newspaperIssue23Html.includes("AI Newspaper · Issue 23") ||
+  !newspaperIssue23Html
     .replace(/<[^>]+>/g, "")
     .includes("GPT-6 Astra 发布：电脑操作提速，跨窗口历史开始可检索") ||
-  !latestNewspaperHtml.includes("2026.08.31") ||
-  !latestNewspaperHtml.includes("09.06")
+  !newspaperIssue23Html.includes("2026.08.31") ||
+  !newspaperIssue23Html.includes("09.06")
 ) {
   throw new Error(
     "The exported Weekly Newspaper Issue 23 is missing its publication metadata.",
   );
+}
+
+if (
+  !latestNewspaperHtml.includes("AI Newspaper · Issue 24") ||
+  !latestNewspaperHtml.replace(/<[^>]+>/g, "").includes("本周AI进展总结") ||
+  !latestNewspaperHtml.includes('datetime="2026-09-07"') ||
+  !latestNewspaperHtml.includes('datetime="2026-09-13"')
+) {
+  throw new Error(
+    "The exported Weekly Newspaper Issue 24 is missing its publication metadata.",
+  );
+}
+
+const latestArchiveCard = newspaperArchiveHtml.match(
+  /<a\s+class="issue-card"[\s\S]*?<\/a>/,
+)?.[0];
+if (
+  !latestArchiveCard?.includes('href="./issue-24/"') ||
+  !latestArchiveCard.includes('class="latest-badge"')
+) {
+  throw new Error("Issue 24 must appear first and be marked as latest.");
 }
 
 console.log(
