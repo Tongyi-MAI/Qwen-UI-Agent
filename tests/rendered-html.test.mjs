@@ -246,6 +246,21 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
   assert.match(weeklyNewspaperIssue25, /datetime="2026-09-14"/);
   assert.match(weeklyNewspaperIssue25, /datetime="2026-09-20"/);
 
+  const weeklyNewspaperIssue26 = await readFile(
+    new URL(
+      "../public/weekly-newspaper/issue-26/index.html",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.match(weeklyNewspaperIssue26, /AI Newspaper · Issue 26/);
+  assert.match(
+    weeklyNewspaperIssue26.replace(/<[^>]+>/g, ""),
+    /本周AI进展总结/,
+  );
+  assert.match(weeklyNewspaperIssue26, /datetime="2026-11-02"/);
+  assert.match(weeklyNewspaperIssue26, /datetime="2026-11-08"/);
+
   const newspaperArchive = await readFile(
     new URL("../public/weekly-newspaper/index.html", import.meta.url),
     "utf8",
@@ -258,6 +273,7 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /individual newspaper issues are published in Chinese/,
   );
   assert.match(newspaperArchive, /data-en=["']ISSUE["']/);
+  assert.match(newspaperArchive, />26<\/span>/);
   assert.match(newspaperArchive, />25<\/span>/);
   assert.match(newspaperArchive, />24<\/span>/);
   assert.match(newspaperArchive, />23<\/span>/);
@@ -271,8 +287,9 @@ test("server-renders the Qwen-UI-Agent technical report", async () => {
     /<a\s+class="issue-card"[\s\S]*?<\/a>/,
   )?.[0];
   assert.ok(latestArchiveCard);
-  assert.match(latestArchiveCard, /href="\.\/issue-25\/"/);
+  assert.match(latestArchiveCard, /href="\.\/issue-26\/"/);
   assert.match(latestArchiveCard, /class="latest-badge"/);
+  assert.match(newspaperArchive, /2026 年 11 月 2 日—11 月 8 日/);
   assert.match(newspaperArchive, /2026 年 9 月 14 日—9 月 20 日/);
   assert.match(newspaperArchive, /2026 年 9 月 7 日—9 月 13 日/);
   assert.match(newspaperArchive, /data-en="This Week in AI"/);
