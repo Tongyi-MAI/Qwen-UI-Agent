@@ -122,8 +122,13 @@ const newspaperIssue26Html = await readFile(
   "utf8",
 );
 
-const latestNewspaperHtml = await readFile(
+const newspaperIssue27Html = await readFile(
   path.join(outputDir, "weekly-newspaper", "issue-27", "index.html"),
+  "utf8",
+);
+
+const latestNewspaperHtml = await readFile(
+  path.join(outputDir, "weekly-newspaper", "issue-28", "index.html"),
   "utf8",
 );
 
@@ -137,6 +142,7 @@ for (const archiveText of [
   "Browse AI Newspaper Issues",
   "individual newspaper issues are published in Chinese",
   'data-en="ISSUE"',
+  ">28</span>",
   ">27</span>",
   ">26</span>",
   ">25</span>",
@@ -147,6 +153,8 @@ for (const archiveText of [
   ">20</span>",
   ">19</span>",
   "LATEST",
+  "2026 年 11 月 16 日—11 月 22 日",
+  "./issue-28/",
   "2026 年 11 月 9 日—11 月 15 日",
   "./issue-27/",
   "2026 年 11 月 2 日—11 月 8 日",
@@ -289,13 +297,24 @@ if (
 }
 
 if (
-  !latestNewspaperHtml.includes("AI Newspaper · Issue 27") ||
-  !latestNewspaperHtml.replace(/<[^>]+>/g, "").includes("本周AI进展总结") ||
-  !latestNewspaperHtml.includes('datetime="2026-11-09"') ||
-  !latestNewspaperHtml.includes('datetime="2026-11-15"')
+  !newspaperIssue27Html.includes("AI Newspaper · Issue 27") ||
+  !newspaperIssue27Html.replace(/<[^>]+>/g, "").includes("本周AI进展总结") ||
+  !newspaperIssue27Html.includes('datetime="2026-11-09"') ||
+  !newspaperIssue27Html.includes('datetime="2026-11-15"')
 ) {
   throw new Error(
     "The exported Weekly Newspaper Issue 27 is missing its publication metadata.",
+  );
+}
+
+if (
+  !latestNewspaperHtml.includes("AI Newspaper · Issue 28") ||
+  !latestNewspaperHtml.replace(/<[^>]+>/g, "").includes("本周AI进展总结") ||
+  !latestNewspaperHtml.includes('datetime="2026-11-16"') ||
+  !latestNewspaperHtml.includes('datetime="2026-11-22"')
+) {
+  throw new Error(
+    "The exported Weekly Newspaper Issue 28 is missing its publication metadata.",
   );
 }
 
@@ -303,10 +322,10 @@ const latestArchiveCard = newspaperArchiveHtml.match(
   /<a\s+class="issue-card"[\s\S]*?<\/a>/,
 )?.[0];
 if (
-  !latestArchiveCard?.includes('href="./issue-27/"') ||
+  !latestArchiveCard?.includes('href="./issue-28/"') ||
   !latestArchiveCard.includes('class="latest-badge"')
 ) {
-  throw new Error("Issue 27 must appear first and be marked as latest.");
+  throw new Error("Issue 28 must appear first and be marked as latest.");
 }
 
 console.log(
